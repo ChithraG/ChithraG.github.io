@@ -15,23 +15,23 @@ function createApiFactory(App){
 	App.factory('transitAPI', function($q, $timeout, $http) {
 	  return {
 	    getProviders: function() {
-		    return makeCall($q, $http, 'http://svc.metrotransit.org/nextrip/providers');
+		    return makeCall($q, $http, 'https://svc.metrotransit.org/nextrip/providers');
 		},
 
 		getAllRoutes: function() {
-		    return makeCall($q, $http, 'http://svc.metrotransit.org/NexTrip/Routes');
+		    return makeCall($q, $http, 'https://svc.metrotransit.org/NexTrip/Routes');
 		},
 
 		getDirections: function(routeId) {
-		    return makeCall($q, $http, 'http://svc.metrotransit.org/NexTrip/Directions/' + routeId);
+		    return makeCall($q, $http, 'https://svc.metrotransit.org/NexTrip/Directions/' + routeId);
 		},
 
 		getStopsForRoute: function(routeId, directionId) {
-		    return makeCall($q, $http, 'http://svc.metrotransit.org/NexTrip/Stops/' + routeId + '/' + directionId);
+		    return makeCall($q, $http, 'https://svc.metrotransit.org/NexTrip/Stops/' + routeId + '/' + directionId);
 		},
 
 		getDepartures: function(routeId, directionId, stopId) {
-		    return makeCall($q, $http, 'http://svc.metrotransit.org/NexTrip/' + routeId + '/' + directionId + '/' + stopId);
+		    return makeCall($q, $http, 'https://svc.metrotransit.org/NexTrip/' + routeId + '/' + directionId + '/' + stopId);
 		}
 
 	  };
