@@ -6,6 +6,10 @@ function createMapFactory(App){
   App.factory('transitMap', function($q, $timeout, $http) {
     return {
       init: function() {
+        if(!google){
+          $timeout(this.init, 500);
+          return;
+        }
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
         });
@@ -32,6 +36,7 @@ function createMapFactory(App){
             var infoWindow = new google.maps.InfoWindow({
               content: '<b>' + busInfo.label + '</b>: ' + busInfo.id,
               closeBoxURL: '',
+              disableAutoPan: true,
             });
             infoWindow.open(map, gMarker);
             gMarker.addListener('click', function() {

@@ -39,6 +39,7 @@ function createControllers(App){
 		$scope.route = SharedData.route;
 		$scope.direction = SharedData.direction;
 		$scope.stopId = SharedData.stopId;
+		
 		transitMap.init();
 
 		$scope.showAllBuses = transitMap.showBus;
@@ -46,7 +47,7 @@ function createControllers(App){
 		var reloadAgain = function(){
 			timer = $timeout(function(){
 				$scope.loadData(true);
-			}, 10000);
+			}, 15000);
 		}
 
 		$scope.loadData = function(isReload){
@@ -76,12 +77,10 @@ function createControllers(App){
 				$scope.departures = newDepartures;
 				transitMap.updateMarkers($scope.departures);
 				if (!isReload)
-					$timeout(function(){
-						transitMap.showBus(true);
-					}, 1000);
+					transitMap.showBus(true);
 				reloadAgain();
 			}, function(reason) {
-				alert('Failed: ' + reason);
+				console.log('Failed: ' + reason);
 				reloadAgain();
 			});
 		}
