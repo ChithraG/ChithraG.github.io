@@ -1,0 +1,43 @@
+<html ng-app="app">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- JS libraries -->
+    <script src="../lib/jquery-3.1.1.min.js"></script>
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-route.js"></script>
+    <script src="../lib/lodash.js"></script>
+
+    <!-- Bootstrap reqs -->
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" />
+    <script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7bwxFOMOZNQS9LEVt6fJ3VbpG5QdQuL4&&callback=angular.noop">
+    </script>
+
+    <script src="script/main.js"></script>
+    <script src="script/controllers.js"></script>
+    <script src="script/apiFactory.js"></script>
+    <script src="script/directives.js"></script>
+    <script src="script/map.js"></script>
+    <link rel="stylesheet" href="style/style.css" />
+
+    <script>
+        var App = createApp();
+        createControllers(App);
+        createApiFactory(App);
+        createDirectives(App);
+        createMapFactory(App);
+        // var initMap = _.noop;
+    </script>
+
+  </head>
+  <body>
+    <ng-view></ng-view>
+  </body>
+</html>

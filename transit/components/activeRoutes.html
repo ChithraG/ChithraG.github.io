@@ -1,0 +1,66 @@
+<div class="tab-pane" data-ng-init="loadProviders()">
+	<div class="tab-content-inner">
+		<br />
+		<div>
+			<span class="dropdown-label">Select provider:</span>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					{{currentProvider === undefined ? "--select--" : currentProvider.Text}}
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li ng-repeat="provider in providers">
+						<a ng-click="onChangeProvider($event, provider.Value)" data-value={{provider.Value}} href="#">{{provider.Text}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div ng-if="currentProvider !== undefined">
+			<span class="dropdown-label">Select route:</span>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					{{currentRoute === undefined ? "--select--" : currentRoute.Description}}
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li ng-repeat="route in routesForProvider">
+						<a ng-click="onChangeRoute($event, route.Route)" 
+							data-value={{route.Route}} href="#">{{route.Description}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div ng-if="currentRoute !== undefined ">
+			<span class="dropdown-label">Select direction:</span>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					{{currentDirection === undefined ? "--select--" : currentDirection.Text}}
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li ng-repeat="direction in directions">
+						<a ng-click="onChangeDirection($event, direction.Value)" href="#">
+							{{direction.Text}}
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<br />
+
+		<div class="stops-list-container" ng-if="currentDirection !== undefined">
+			<span style="font-size:20px;">Stops</span>
+			<div class="stops-list" ng-repeat="stop in stops" style="margin-left:10px">
+				<div class="arrow-right"></div>
+				<div class="stop-text">
+					<a href="#/transitTracker/{{currentProvider.Value}}/{{currentRoute.Route}}/{{currentDirection.Value}}/{{stop.Value}}">
+					{{stop.Text}}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

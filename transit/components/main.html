@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs" >
+  <li ng-repeat="option in menuOptions" ng-class="{active: option.value===action, disabled: option.value==='transitTracker'}">
+  	<a href="#/{{option.value}}" ng-click="linkClick($event, option.value)">{{option.display}}</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <active-routes ng-if="action==='activeRoutes'"></active-routes>
+  <tracker ng-if="action==='transitTracker'"></tracker>
+  <div id="map" ng-show="action==='transitTracker'"></div>
+</div>

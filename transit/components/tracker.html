@@ -1,0 +1,23 @@
+<div class="tab-pane" data-ng-init="loadData()">
+	<br />
+	<div class="tableContainer">
+		<table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th>Bus ID</th>
+		        <th>Label</th>
+		        <th>Departs in</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr ng-repeat="departure in departures">
+		        <td>{{departure.id}}</td>
+		        <td>{{departure.label}}</td>
+		        <td>{{departure.text}}</td>
+		      </tr>
+		    </tbody>
+		</table>
+	</div>
+	<button type="button" class="btn btn-primary" ng-click="showAllBuses()">Show all buses</button>
+	<button type="button" class="btn btn-primary" ng-click="showAllBuses(true)">Show nearest bus</button>
+</div>
